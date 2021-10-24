@@ -41,7 +41,7 @@ public abstract class Record {
         }
     }
 
-    public String displayRecord() {
+    public String recordInfo() {
         String output = recordType + "\n" + recordName + "\nBy: " + recordArtist + "\n" + discSpeed + " RPM\n" + discSize + " inch Disc\n" +
                 "Released in " + year + "\nNumber of tracks: " + numberOfTracks + "\nDisc Count: " + numberOfDiscs + "\n";
 

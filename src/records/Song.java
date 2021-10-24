@@ -8,4 +8,8 @@ public class Song {
         this.songName = songName;
         this.trackLength = trackLength;
     }
+
+    public String songInfo() {
+        return songName + "\n" + trackLength;
+    }
 }
