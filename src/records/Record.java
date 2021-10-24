@@ -4,8 +4,9 @@ import java.util.ArrayList;
 import java.util.List;
 
 public abstract class Record {
-    public final String albumName;
-    public final String albumArtist;
+    public final String recordType;
+    public final String recordName;
+    public final String recordArtist;
     public final String discSpeed;
     public final String discSize;
     public final String year;
@@ -13,15 +14,17 @@ public abstract class Record {
     public final int numberOfDiscs;
     public final List<Song> songs = new ArrayList<>();
 
-    public Record(String albumName,
-                  String albumArtist,
+    public Record(String recordType,
+                  String recordName,
+                  String recordArtist,
                   String discSpeed,
                   String discSize,
                   String year,
                   int numberOfTracks,
                   int numberOfDiscs) {
-        this.albumName = albumName;
-        this.albumArtist = albumArtist;
+        this.recordType = recordType;
+        this.recordName = recordName;
+        this.recordArtist = recordArtist;
         this.discSpeed = discSpeed;
         this.discSize = discSize;
         this.year = year;
@@ -36,6 +39,17 @@ public abstract class Record {
         } else {
             System.out.println("Album can hold no more songs");
         }
+    }
+
+    public String displayRecord() {
+        String output = recordType + "\n" + recordName + "\nBy: " + recordArtist + "\n" + discSpeed + " RPM\n" + discSize + " inch Disc\n" +
+                "Released in " + year + "\nNumber of tracks: " + numberOfTracks + "\nDisc Count: " + numberOfDiscs + "\n";
+
+        for (Song song : songs) {
+            output += song.songName;
+        }
+
+        return output;
     }
 
 }
