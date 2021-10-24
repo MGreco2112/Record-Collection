@@ -33,9 +33,9 @@ public abstract class Record {
 
     }
 
-    public void addSong(Song song) {
+    public void addSong(List<Song> tracks) {
         if (songs.size() < numberOfTracks) {
-            songs.add(song);
+            songs.addAll(tracks);
         } else {
             System.out.println("Album can hold no more songs");
         }

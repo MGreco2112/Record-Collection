@@ -1,6 +1,7 @@
 package collection;
 
 import records.Album;
+import records.Song;
 import utilities.Console;
 
 import java.util.ArrayList;
@@ -8,7 +9,7 @@ import java.util.List;
 
 public class RecordCollection {
     public final String owner;
-    public final List<Record> records = new ArrayList<>();
+    public final ArrayList<Record> records = new ArrayList<>();
 
     public RecordCollection(String owner) {
         this.owner = owner;
@@ -46,6 +47,20 @@ public class RecordCollection {
         String discSize = Console.getString("What is the Diameter of the Record, in Inches?", true);
         String releaseYear = Console.getString("When was the Record released?", true);
         int numberOfTracks = Console.getInt("How many Tracks are on this Record?", 1, Integer.MAX_VALUE);
+
+        List<Song> songs = new ArrayList<>();
+        int trackNumber = 1;
+
+        while (songs.size() < numberOfTracks) {
+
+            String trackName = Console.getString("What is the name of track #" + trackNumber + "?", true);
+            String trackLength = Console.getString("How long is " + trackName + "?\nEnter in x:xx format", true);
+
+            trackNumber++;
+
+            songs.add(new Song(trackName, trackLength));
+        }
+
         int numberOfDiscs = Console.getInt("How many Discs are in this Set?", 1, Integer.MAX_VALUE);
 
         int discSpeedInput = Console.getInt("What is the Speed of this Record, in RPM?" +
@@ -73,8 +88,9 @@ public class RecordCollection {
             case 1 -> {
                 System.out.println("Creating Album " + recordName);
                 Album newAlbum = new Album(recordName, recordArtist, discSpeed, discSize, releaseYear, numberOfTracks, numberOfDiscs);
+                newAlbum.addSong(songs);
 
-                records.add()
+                records.add((Record) newAlbum);
             }
         }
 
