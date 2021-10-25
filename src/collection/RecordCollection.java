@@ -38,7 +38,38 @@ public class RecordCollection {
             Closes System
      */
 
-    public void newRecordType() {
+    public void menuSelection() {
+        int menuChoice = Console.getInt("Choose a Menu Option:\n1) Display Collection\n2) Display a Record's Info\n3) Add a New Record\n" +
+                "4) Modify A Record\n5) Remove A Record\n0) Exit System", 0, 5);
+
+        switch (menuChoice) {
+            case 0 -> {
+                System.out.println("Leaving...");
+                System.exit(0);
+            }
+            case 1 -> displayCollection();
+            case 2 -> {
+                //TODO add selection method
+            }
+            case 3 -> newRecordType();
+            case 4 -> {
+                //TODO create modify method
+            }
+            case 5 -> {
+                //TODO create remove a record method
+            }
+        }
+    }
+
+    private void displayCollection() {
+        int recordNumber = 1;
+        for (Disc record : records) {
+            System.out.println(recordNumber + ") " + record.getRecordName());
+            recordNumber++;
+        }
+    }
+
+    private void newRecordType() {
         int recordChoice = Console.getInt("What type of Record is this?\n1) Album\n2) EP\n3) Single\n0) Exit", 0, 3);
 
         if (recordChoice != 0) {

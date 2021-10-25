@@ -3,7 +3,7 @@ package records;
 import java.util.ArrayList;
 import java.util.List;
 
-public abstract class Record {
+public abstract class Record implements Disc{
     public final String recordType;
     public final String recordName;
     public final String recordArtist;
@@ -31,6 +31,29 @@ public abstract class Record {
         this.numberOfTracks = numberOfTracks;
         this.numberOfDiscs = numberOfDiscs;
 
+    }
+
+    public void addSongs(List<Song> tracks) {
+        if (songs.size() < numberOfTracks) {
+            songs.addAll(tracks);
+        } else {
+            System.out.println("Album can hold no more songs");
+        }
+    }
+
+    public String recordInfo() {
+        String output = recordType + "\n" + recordName + "\nBy: " + recordArtist + "\n" + discSpeed + " RPM\n" + discSize + " inch Disc\n" +
+                "Released in " + year + "\nNumber of tracks: " + numberOfTracks + "\nDisc Count: " + numberOfDiscs + "\n";
+
+        for (Song song : songs) {
+            output += song.songName;
+        }
+
+        return output;
+    }
+
+    public String getRecordName() {
+        return recordName;
     }
 
 

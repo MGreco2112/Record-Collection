@@ -7,4 +7,5 @@ public interface Disc {
     void addSongs(List<Song> tracks);
 
     String recordInfo();
+    String getRecordName();
 }

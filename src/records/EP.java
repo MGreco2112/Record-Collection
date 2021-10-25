@@ -2,7 +2,7 @@ package records;
 
 import java.util.List;
 
-public class EP extends Record implements Disc{
+public class EP extends Record{
 
 
     public EP(String recordName, String recordArtist, String discSpeed, String discSize, String year, int numberOfTracks, int numberOfDiscs) {
