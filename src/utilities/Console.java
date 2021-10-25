@@ -3,7 +3,7 @@ package utilities;
 import java.util.Scanner;
 
 public class Console {
-    private static Scanner scanner = new Scanner(System.in);
+    private static final Scanner scanner = new Scanner(System.in);
 
     public static int getInt(String prompt, int min, int max) {
         int output = min - 1;
@@ -20,7 +20,7 @@ public class Console {
                 output = min - 1;
             }
 
-        }  while (output <= min || output >= max);
+        }  while (output < min || output > max);
 
         return output;
     }
