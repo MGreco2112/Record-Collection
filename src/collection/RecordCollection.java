@@ -10,7 +10,12 @@ public class RecordCollection {
     public final String owner;
     public final ArrayList<Disc> records = new ArrayList<>();
 
-    public RecordCollection(String owner) {
+    public RecordCollection() {
+        this.owner = Console.getString("Enter your name:", true);
+        System.out.println("Welcome " + owner);
+    }
+
+    public RecordCollection (String owner) {
         this.owner = owner;
     }
 
@@ -39,21 +44,24 @@ public class RecordCollection {
      */
 
     public void menuSelection() {
-        int menuChoice = Console.getInt("Choose a Menu Option:\n1) Display Collection\n2) Display a Record's Info\n3) Add a New Record\n" +
-                "4) Modify A Record\n5) Remove A Record\n0) Exit System", 0, 5);
+        while (true) {
 
-        switch (menuChoice) {
-            case 0 -> quitProgram();
-            case 1 -> displayCollection();
-            case 2 -> {
-                //TODO add selection method
-            }
-            case 3 -> newRecordType();
-            case 4 -> {
-                //TODO create modify method
-            }
-            case 5 -> {
-                //TODO create remove a record method
+            int menuChoice = Console.getInt("Choose a Menu Option:\n1) Display Collection\n2) Display a Record's Info\n3) Add a New Record\n" +
+                    "4) Modify A Record\n5) Remove A Record\n0) Exit System", 0, 5);
+
+            switch (menuChoice) {
+                case 0 -> quitProgram();
+                case 1 -> displayCollection();
+                case 2 -> {
+                    //TODO add selection method
+                }
+                case 3 -> newRecordType();
+                case 4 -> {
+                    //TODO create modify method
+                }
+                case 5 -> {
+                    //TODO create remove a record method
+                }
             }
         }
     }
@@ -64,10 +72,15 @@ public class RecordCollection {
     }
 
     private void displayCollection() {
-        int recordNumber = 1;
-        for (Disc record : records) {
-            System.out.println(recordNumber + ") " + record.getRecordName());
-            recordNumber++;
+        if (records.size() > 0) {
+
+            int recordNumber = 1;
+            for (Disc record : records) {
+                System.out.println(recordNumber + ") " + record.getRecordName());
+                recordNumber++;
+            }
+        } else {
+            System.out.println(owner + "'s Collection is empty");
         }
     }
 
