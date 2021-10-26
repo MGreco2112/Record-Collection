@@ -43,10 +43,7 @@ public class RecordCollection {
                 "4) Modify A Record\n5) Remove A Record\n0) Exit System", 0, 5);
 
         switch (menuChoice) {
-            case 0 -> {
-                System.out.println("Leaving...");
-                System.exit(0);
-            }
+            case 0 -> quitProgram();
             case 1 -> displayCollection();
             case 2 -> {
                 //TODO add selection method
@@ -59,6 +56,11 @@ public class RecordCollection {
                 //TODO create remove a record method
             }
         }
+    }
+
+    private void quitProgram() {
+        System.out.println("Leaving...");
+        System.exit(0);
     }
 
     private void displayCollection() {
