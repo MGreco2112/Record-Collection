@@ -84,6 +84,27 @@ public class RecordCollection {
         }
     }
 
+    private void selectRecord() {
+        int selectedRecord = 0;
+
+        String prompt = "Enter the number of Record you wish to select\nIf it isn't listed, press ENTER to advance";
+
+        for (int recordCounter = 1; recordCounter < records.size(); recordCounter++) {
+            System.out.println(recordCounter + ") " + records.get(recordCounter).getRecordName());
+
+            if (recordCounter % 10 == 0) {
+                String choice = Console.getString(prompt, false);
+
+                switch (choice) {
+                    case "" -> System.out.println("Printing next 10 Records");
+                    default -> {
+
+                    }
+                }
+            }
+        }
+    }
+
     private void newRecordType() {
         int recordChoice = Console.getInt("What type of Record is this?\n1) Album\n2) EP\n3) Single\n0) Exit", 0, 3);
 
