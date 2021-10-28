@@ -52,9 +52,7 @@ public class RecordCollection {
             switch (menuChoice) {
                 case 0 -> quitProgram();
                 case 1 -> displayCollection();
-                case 2 -> {
-                    //TODO add selection method
-                }
+                case 2 -> displaySelectedRecord();
                 case 3 -> newRecordType();
                 case 4 -> {
                     //TODO create modify method
@@ -84,7 +82,7 @@ public class RecordCollection {
         }
     }
 
-    private void selectRecord() {
+    private int selectRecord() {
         int selectedRecord = 0;
 
         String prompt = "Enter the number of Record you wish to select\nIf it isn't listed, press ENTER to advance";
@@ -98,10 +96,30 @@ public class RecordCollection {
                 switch (choice) {
                     case "" -> System.out.println("Printing next 10 Records");
                     default -> {
+                        try {
+                            selectedRecord = Integer.parseInt(choice);
+                        } catch (Exception e) {
+                            System.out.println("Invalid entry, try again");
+                            selectRecord();
+                        }
+
+                        return selectedRecord;
 
                     }
                 }
             }
+        }
+
+        return 0;
+    }
+
+    private void displaySelectedRecord() {
+        int selectedRecord = selectRecord();
+
+        if (selectedRecord != 0) {
+            System.out.println(records.get(selectedRecord).recordInfo());
+        } else {
+            System.out.println("No record selected");
         }
     }
 
