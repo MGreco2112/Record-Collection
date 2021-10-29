@@ -87,17 +87,17 @@ public class RecordCollection {
 
         String prompt = "Enter the number of Record you wish to select\nIf it isn't listed, press ENTER to advance";
 
-        for (int recordCounter = 1; recordCounter < records.size(); recordCounter++) {
-            System.out.println(recordCounter + ") " + records.get(recordCounter).getRecordName());
+        for (int recordCounter = 0; recordCounter < records.size(); recordCounter++) {
+            System.out.println(recordCounter + 1 + ") " + records.get(recordCounter).getRecordName());
 
-            if (recordCounter % 10 == 0) {
+            if (records.size() > 10 || recordCounter % 10 == 0) {
                 String choice = Console.getString(prompt, false);
 
                 switch (choice) {
                     case "" -> System.out.println("Printing next 10 Records");
                     default -> {
                         try {
-                            selectedRecord = Integer.parseInt(choice);
+                            selectedRecord = Integer.parseInt(choice) - 1;
                         } catch (Exception e) {
                             System.out.println("Invalid entry, try again");
                             selectRecord();
@@ -116,7 +116,7 @@ public class RecordCollection {
     private void displaySelectedRecord() {
         int selectedRecord = selectRecord();
 
-        if (selectedRecord != 0) {
+        if (selectedRecord >= 0) {
             System.out.println(records.get(selectedRecord).recordInfo());
         } else {
             System.out.println("No record selected");

@@ -46,10 +46,10 @@ public abstract class Record implements Disc{
                 "Released in " + year + "\nNumber of tracks: " + numberOfTracks + "\nDisc Count: " + numberOfDiscs + "\n";
 
         for (Song song : songs) {
-            output += song.songName;
+            output += song.songName + " ";
         }
 
-        return output;
+        return output.trim();
     }
 
     public String getRecordName() {
