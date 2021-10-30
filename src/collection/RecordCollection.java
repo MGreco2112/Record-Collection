@@ -55,6 +55,28 @@ public class RecordCollection {
                 case 2 -> displaySelectedRecord();
                 case 3 -> newRecordType();
                 case 4 -> {
+                    int selectedRecordIndex = selectRecord();
+
+                    if (selectedRecordIndex >= 0) {
+                        Disc selectedRecord = records.get(selectedRecordIndex);
+
+                        int choice = Console.getInt("Which piece of data will you edit?\n" +
+                                "1) Record Type\n" +
+                                "2) Record Name\n" +
+                                "3) Artist Name\n" +
+                                "4) Disc Speed\n" +
+                                "5) Disc Size" +
+                                "6) Release Year\n" +
+                                "7) Number Of Tracks" +
+                                "8) Number of Discs" +
+                                "9) Track Information\n" +
+                                "0) Exit", 0, 9);
+
+
+
+                    } else {
+                        System.out.println("No record selected to edit");
+                    }
                     //TODO create modify method
                 }
                 case 5 -> {
