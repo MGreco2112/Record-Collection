@@ -77,7 +77,7 @@ public class RecordCollection {
                     } else {
                         System.out.println("No record selected to edit");
                     }
-                    //TODO create modify method
+
                 }
                 case 5 -> {
                     //TODO create remove a record method
